@@ -28,6 +28,9 @@ ballY = round(dispY/2)
 ballRadius = 5
 ballXDirection = random.randint(0,1)
 ballYDirection = random.randint(-1,1)
+// Prevent bouncing back and forth without a vertical change
+while ballYDirection==0:
+  ballYDirection = random.randint(-1,1)
 ballXSpeed = random.randint(4,7)
 ballYSpeed = random.randint(3,5)
 
