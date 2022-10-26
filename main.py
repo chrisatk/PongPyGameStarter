@@ -25,10 +25,11 @@ player2Y = 10
 speed = 10
 ballX = round(dispX/2)
 ballY = round(dispY/2)
+ballRadius = 5
 ballXDirection = random.randint(0,1)
 ballYDirection = random.randint(-1,1)
-ballXSpeed = random.randint(5,10)
-ballYSpeed = random.randint(5,10)
+ballXSpeed = random.randint(4,7)
+ballYSpeed = random.randint(3,5)
 
 while True:
   pygame.time.delay(100)
@@ -82,7 +83,18 @@ while True:
 
   player2 = pygame.draw.rect(disp,[200,200,200],(player2X,player2Y,paddleWidth,paddleHeight))
 
-  ball = pygame.draw.circle(disp,(200,200,200),(ballX,ballY),5)
-  
+  ball = pygame.draw.circle(disp,(200,200,200),(ballX,ballY),ballRadius)
+
+  # Hanlde ball boundries and game over
+  ### You need to finish the code in here to get Pong to work properly
+  if player1.colliderect(ball):
+    ballXDirection = -ballXDirection
+  elif ballX < ballXSpeed or ballX > dispX-ballXSpeed:
+    print("Game over")
+    runGame = False
+    
+  # Refresh the display
+  pygame.display.update()
+
   # Refresh the display
   pygame.display.update()
